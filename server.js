@@ -1,29 +1,39 @@
-require('./models/db');
-
 const express = require('express');
-const path = require('path');
-const exphbs = require('express-handlebars');
-const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
 
-const employeeController = require('./controllers/employeeController');
-const studentController = require('./controllers/studentController');
-const adminloginController = require('./controllers/adminloginController');
-const loginController = require('./controllers/loginController');
+// create express app
+const app = express();
 
-var app = express();
-app.use(bodyparser.urlencoded({
-    extended: true
-}));
-app.use(bodyparser.json());
-app.set('views', path.join(__dirname, '/views/'));
-app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
-app.set('view engine', 'hbs');
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
 
-app.listen(3000, () => {
-    console.log('Express server started at port : 3000');
+// parse application/json
+app.use(bodyParser.json())
+
+// Configuring the database
+const dbConfig = require('./config/database.config.js');
+const mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
+
+// Connecting to the database
+mongoose.connect(dbConfig.url, {
+	useNewUrlParser: true
+}).then(() => {
+    console.log("Successfully connected to the database");    
+}).catch(err => {
+    console.log('Could not connect to the database. Exiting now...', err);
+    process.exit();
 });
 
-app.use('/employee', employeeController);
-app.use('/student', studentController);
-app.use('/adminlogin', adminloginController);
-app.use('/login', loginController);
+// define a simple route
+app.get('/', (req, res) => {
+    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+});
+
+require('./app/routes/note.routes.js')(app);
+
+// listen for requests
+app.listen(5000, () => {
+    console.log("Server is listening on port 5000");
+});
