@@ -1,22 +1,6 @@
 const mongoose = require('mongoose');
 
 var usersSchema = new mongoose.Schema({
-    fullName: {
-        type: String,
-        required: 'This field is required.'
-    },
-    email: {
-        type: String,
-        required: 'This field is required.'
-    },
-    mobile: {
-        type: String,
-        required: 'This field is required.'
-    },
-    city: {
-        type: String,
-        required: 'This field is required.'
-    },
 	first_name: {
         type: String,
         required: 'This field is required.'

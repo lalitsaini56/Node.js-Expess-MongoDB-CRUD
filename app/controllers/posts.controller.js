@@ -1,7 +1,8 @@
 const Posts = require('../models/posts.model.js');
+const PostsLikes = require('../models/postlikes.model.js');
 
-// Create and Save a new Posts
-exports.create = (req, res) => {
+// createPost and Save a new Posts
+exports.createPost = (req, res) => {
     // Validate request
     if(!req.body.content) {
         return res.status(400).send({
@@ -9,7 +10,7 @@ exports.create = (req, res) => {
         });
     }
 
-    // Create a Posts
+    // createPost a Posts
     const note = new Posts({
         title: req.body.title || "Untitled Posts", 
         content: req.body.content
@@ -27,7 +28,7 @@ exports.create = (req, res) => {
 };
 
 // Retrieve and return all notes from the database.
-exports.findAll = (req, res) => {
+exports.getPosts = (req, res) => {
     Posts.find()
     .then(notes => {
         res.send(notes);
@@ -39,8 +40,8 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single note with a noteId
-exports.findOne = (req, res) => {
-    Posts.findById(req.params.noteId)
+exports.getPosts = (req, res) => {
+    Posts.findById(req.params.postsId)
     .then(note => {
         if(!note) {
             return res.status(404).send({
@@ -56,6 +57,34 @@ exports.findOne = (req, res) => {
         }
         return res.status(500).send({
             message: "Error retrieving note with id " + req.params.noteId
+        });
+    });
+};
+
+
+// PostsLikes and Save a new Posts
+exports.postLike = (req, res) => {
+    // Validate request
+    if(!req.body.likedUserName) {
+        return res.status(400).send({
+            message: "Posts liked User Name can not be empty"
+        });
+    }
+
+    // PostsLikes a Posts
+    const PostsLikes = new PostsLikes({
+        likedUserName: req.body.likedUserName || "Untitled likedUserId", 
+        likedUserId: req.body.likedUserId || "Untitled likedUserId", 
+        likedUserId: req.body.likedUserId || "Untitled likedUserId", 
+    });
+
+    // Save Posts in the database
+    PostsLikes.save()
+    .then(data => {
+        res.send(data);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while creating the Posts."
         });
     });
 };
