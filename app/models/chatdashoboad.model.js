@@ -41,4 +41,4 @@ var chatdashoboadSchema = new mongoose.Schema({
     return emailRegex.test(val);
 }, 'Invalid e-mail.');*/
 
-mongoose.model('ChatDashoboad', chatdashoboadSchema);
+module.exports = mongoose.model('ChatDashoboad', chatdashoboadSchema);

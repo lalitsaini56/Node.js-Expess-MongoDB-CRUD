@@ -11,7 +11,10 @@
     "RestAPI",
     "MongoDB",
     "Mongoose",
-    "Notes"
+    "Notes",
+    "Users",
+    "Posts",
+    "ChatDashoboad"
   ],
   "author": "callicoder",
   "license": "MIT",

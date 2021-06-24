@@ -25,4 +25,4 @@ var postslikesSchema = new mongoose.Schema({
     return emailRegex.test(val);
 }, 'Invalid e-mail.');*/
 
-mongoose.model('PostsLikes', postslikesSchema);
+module.exports = mongoose.model('PostsLikes', postslikesSchema);

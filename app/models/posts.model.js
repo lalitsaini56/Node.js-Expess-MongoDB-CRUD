@@ -45,4 +45,4 @@ var postsSchema = new mongoose.Schema({
     return emailRegex.test(val);
 }, 'Invalid e-mail.');*/
 
-mongoose.model('Posts', postsSchema);
+module.exports = mongoose.model('Posts', postsSchema);

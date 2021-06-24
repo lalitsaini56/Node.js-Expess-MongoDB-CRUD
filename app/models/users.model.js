@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
-var usersSchema = new mongoose.Schema({
+var UsersSchema = new mongoose.Schema({
+    fb_id: {
+        type: String,
+        required: 'This field is required.'
+    },
 	first_name: {
         type: String,
         required: 'This field is required.'
@@ -64,10 +68,10 @@ var usersSchema = new mongoose.Schema({
 });
 
 // Custom validation for email
-usersSchema.path('emailid').validate((val) => {
+UsersSchema.path('emailid').validate((val) => {
     emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return emailRegex.test(val);
 }, 'Invalid e-mail.');
 
-mongoose.model('Users', usersSchema);
+module.exports = mongoose.model('Users', UsersSchema);
     
