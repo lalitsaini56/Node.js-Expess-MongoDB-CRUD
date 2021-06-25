@@ -3,67 +3,161 @@ const mongoose = require('mongoose');
 var UsersSchema = new mongoose.Schema({
     fb_id: {
         type: String,
-        required: 'This field is required.'
+        required: 'This field is required.'//
     },
 	first_name: {
         type: String,
-        required: 'This field is required.'
+        required: 'This field is required.'//
     },
 	last_name: {
         type: String,
-        required: 'This field is required.'
+        required: 'This field is required.'//
     },
 	emailid: {
         type: String,
-        required: 'This field is required.'
+        required: 'This field is required.'//
     },
-	dob: {
+	birthday: {
         type: String,
-        required: 'This field is required.'
+        required: 'This field is required.'//
+    },
+    age:{
+        type: Number,
+        required: 'This field is required.'//
+    },
+    gender: {
+        type: String,
+        required: 'This field is required.'//
+    },
+    about_me: {
+        type: String
+    },
+    lat_long: {
+        type: String,
+        required: 'This field is required.'//
+    },
+    lat: {
+        type: String,
+        required: 'This field is required.'//
+    },
+    long: {
+        type: String
+    },
+    longitude: {
+        type: String
+    },
+    job_title: {
+        type: String
+    },
+    company: {
+        type: String
+    },
+    school: {
+        type: String
+    },
+    image1: {
+        type: String,
+        required: 'This field is required.'//
+    },
+    image2: {
+        type: String
+    },
+    image3: {
+        type: String
+    },
+    image4: {
+        type: String
+    },
+    image5: {
+        type: String
+    },
+    image6: {
+        type: String
+    },
+    like_count:{
+        type: Number
+    },
+    dislike_count:{
+        type: Number
+    },
+    hide_me:{
+        type: Number
+    },
+    block: {
+        type: String
+    },
+    purchased: {
+        type: Number
+    },
+    version: {
+        type: String
+    },
+    device: {
+        type: String
+    },
+    profile_type: {
+        type: String
+    },
+    device_token: {
+        type: String
+    },
+    subscription_datetime: {
+        type: String
+    },
+    promoted: {
+        type: Number
+    },
+    promoted_mins: {
+        type: Number
+    },
+    promoted_date: {
+        type: String
+    },
+    hide_age: {
+        type: Number
+    },
+    hide_location: {
+        type: Number
+    },
+    created: {
+        type: String
     },
 	countrycode: {
-        type: String,
-        required: 'This field is required.'
+        type: String
     },
-	phoneno: {
-        type: String,
-        required: 'This field is required.'
-    },
-	gender: {
-        type: String,
-        required: 'This field is required.'
-    },
+	phone: {
+        type: String
+    },	
 	password: {
         type: String,
-        required: 'This field is required.'
+        required: 'This field is required.'//
     },
 	description: {
+        type: String
+    },
+    interested_in: {
         type: String,
-        required: 'This field is required.'
+        required: 'This field is required.'//
+    },
+    interested_age: {
+        type: String,
+        required: 'This field is required.'//
     },
 	language: {
         type: String,
-        required: 'This field is required.'
+        required: 'This field is required.'//
     },
 	profession: {
-        type: String,
-        required: 'This field is required.'
+        type: String
     },
 	InsertedAgemin: {
-        type: String,
-        required: 'This field is required.'
+        type: String
     },
     InsertedAgemax: {
-        type: String,
-        required: 'This field is required.'
+        type: String
     },
 	intersetedgender: {
-        type: String,
-        required: 'This field is required.'
-    },
-	profilepicture: {
-        type: String,
-        required: 'This field is required.'
+        type: String
     },
 });
 
